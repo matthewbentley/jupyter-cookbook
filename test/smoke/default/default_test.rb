@@ -2,17 +2,17 @@
 
 # Inspec test for recipe jupyter::default
 
-# The Inspec reference, with examples and extensive documentation, can be
-# found at http://inspec.io/docs/reference/resources/
+describe command('jupyter --version') do
+  its(:stdout) { should match(/\A4.3.0\Z/) }
+end
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
+describe port(8888) do
+  it 'should eventually be listening to a port' do
+    sleep 1
+    should be_listening
   end
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe command('curl -L localhost:8888') do
+  its(:stdout) { should match(/jupyter/) }
 end

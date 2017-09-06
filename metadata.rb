@@ -1,20 +1,15 @@
 name 'jupyter'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'All Rights Reserved'
-description 'Installs/Configures jupyter'
-long_description 'Installs/Configures jupyter'
+maintainer 'Henry A'
+maintainer_email 'hja22@hja22.co.uk'
+license 'MIT'
+description 'Installs/Configures Jupyter and runs notebook as a service'
+long_description 'Installs/Configures Jupyter and creates, enables and starts a service to run a Jupyter notebook server'
 version '0.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
-# The `issues_url` points to the location where issues for this cookbook are
-# tracked.  A `View Issues` link will be displayed on this cookbook's page when
-# uploaded to a Supermarket.
-#
-# issues_url 'https://github.com/<insert_org_here>/jupyter/issues'
+supports 'ubuntu', '= 16.04'
 
-# The `source_url` points to the development repository for this cookbook.  A
-# `View Source` link will be displayed on this cookbook's page when uploaded to
-# a Supermarket.
-#
-# source_url 'https://github.com/<insert_org_here>/jupyter'
+issues_url 'https://github.com/hja22/jupyter-cookbook/issues'
+source_url 'https://github.com/hja22/jupyter-cookbook'
+
+depends 'poise-python', '~> 1.6'
