@@ -1,4 +1,3 @@
-# jupyter
+# Jupyter Cookbook
 
-TODO: Enter the cookbook description here.
-
+Sets up a Jupyter notebook server using Chef.
