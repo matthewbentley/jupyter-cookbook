@@ -2,7 +2,7 @@ property :username, String, default: 'jupyter'
 property :groupname, String, default: 'jupyter'
 property :service_name, String, name_property: true
 property :ip, String, default: 'localhost'
-property :port, Int, default: 8888
+property :port, Integer, default: 8888
 
 action :create do
   group new_resource.groupname do
