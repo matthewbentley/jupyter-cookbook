@@ -27,19 +27,26 @@ action :create do
     user new_resource.username
   end
 
-  template "/usr/lib/systemd/system/jupyter-#{new_resource.service_name}.service" do
-    source 'jupyter.service.erb'
-    variables(
-      service_name: new_resource.service_name,
-      user: new_resource.username,
-      group: new_resource.groupname,
-      ip: new_resource.ip,
-      port: new_resource.port,
+  systemd_unit "jupyter-#{new_resource.service_name}.service" do
+    content(
+      Unit: {
+        Description: 'Jupyter Notebook',
+        After: 'network.target',
+      },
+      Service: {
+        Type: 'simple',
+        PIDFile: "/run/jupyter-#{new_resource.service_name}.pid",
+        ExecStart: "/usr/local/jupyter-notebook --no-browser --ip=#{new_resource.ip} --port=#{new_resource.port}",
+        User: new_resource.username,
+        Group: new_resource.groupname,
+        Restart: 'always',
+        RestartSec: 10,
+      },
+      Install: {
+        WantedBy: 'multi-user.target',
+      },
     )
-    owner 'root'
-    group 'root'
-    mode '0644'
-    action :create
+    action :create, :enable, :start
   end
 end
 

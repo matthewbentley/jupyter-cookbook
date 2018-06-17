@@ -13,3 +13,4 @@ issues_url 'https://github.com/hja22/jupyter-cookbook/issues'
 source_url 'https://github.com/hja22/jupyter-cookbook'
 
 depends 'poise-python', '~> 1.6'
+depends 'systemd_unit'
