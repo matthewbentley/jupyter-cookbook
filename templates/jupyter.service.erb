@@ -6,7 +6,7 @@ Type=simple
 PIDFile=/run/jupyter-<%= @service_name %>.pid
 # Step 1 and Step 2 details are here..
 # ------------------------------------
-ExecStart=/usr/local/bin/jupyter-notebook --no-browser
+ExecStart=/usr/local/bin/jupyter-notebook --no-browser --ip="<%= @ip %>:<%= @port %>"
 User=<%= @group %>
 Group=<%= @user %>
 WorkingDirectory=/home/<%= @user %>/notebooks

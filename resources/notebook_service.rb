@@ -1,6 +1,8 @@
 property :username, String, default: 'jupyter'
 property :groupname, String, default: 'jupyter'
 property :service_name, String, name_property: true
+property :ip, String, default: 'localhost'
+property :port, Int, default: 8888
 
 action :create do
   group new_resource.groupname do
@@ -30,7 +32,9 @@ action :create do
     variables(
       service_name: new_resource.service_name,
       user: new_resource.username,
-      group: new_resource.groupname
+      group: new_resource.groupname,
+      ip: new_resource.ip,
+      port: new_resource.port,
     )
     owner 'root'
     group 'root'
