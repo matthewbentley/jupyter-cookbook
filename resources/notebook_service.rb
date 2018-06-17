@@ -46,7 +46,9 @@ action :create do
         WantedBy: 'multi-user.target',
       },
     )
-    action :create, :enable, :start
+    action :create
+    action :enable
+    action :start
   end
 end
 
