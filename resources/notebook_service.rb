@@ -17,11 +17,6 @@ action :create do
     shell '/bin/bash'
   end
 
-  directory '/usr/lib/systemd/system/' do
-    owner 'root'
-    group 'root'
-  end
-
   directory "/home/#{new_resource.username}/notebooks" do
     group new_resource.groupname
     user new_resource.username
@@ -47,8 +42,6 @@ action :create do
       },
     )
     action :create
-    action :enable
-    action :start
   end
 end
 
